@@ -1,0 +1,46 @@
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-12 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h3>Company List</h3>
+            <button
+              class="btn btn-success float-end mb-2"
+              (click)="onAddCompany()"
+            >
+              Add New Company
+            </button>
+            <table class="table">
+              <thead class="table-success">
+                <tr>
+                  <th>No</th>
+                  <th>Company Name</th>
+                  <th>Category</th>
+                  <th>Registered Date</th>
+                  <th>Anual Turnover</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="persons?.length != 0">
+                <tr *ngFor="let person of persons; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ person["company_name"] ? person["company_name"] : "-" }}</td>
+                  <td>{{ person["category"] ? person["category"] : "-" }}</td>
+                  <td>{{ person["register_date"] ? person["register_date"] : "-" }}</td>
+                  <td>{{ person["annual_trunover"] ? person["annual_trunover"] : "-" }}</td>
+                </tr>
+              </tbody>
+              <tbody *ngIfElse="persons?.length == 0">
+                <tr>
+                  <td colspan="7" class="no-data-available text-center">
+                    <h3>No data!</h3>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

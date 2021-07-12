@@ -1,0 +1,115 @@
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h3
+              class="
+                card-title
+                bg-success
+                accordion-body
+                text-light text-center
+                p-xl-1
+              "
+            >
+              New Company
+            </h3>
+            <div class="form-signin">
+              <form (ngSubmit)="onSubmit(f)" #f="ngForm" ngNativeValidate>
+                <div
+                  class="form-group mt-2 mb-2"
+                  [class.has-error]="company_name.invalid"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    ngModel
+                    #company_name="ngModel"
+                    id="company_name"
+                    name="company_name"
+                    placeholder="Company Name"
+                    required
+                  />
+                  <span
+                    class="has-error"
+                    *ngIf="company_name.errors?.required && company_name.touched"
+                  >
+                    Company Name is Required
+                  </span>
+                </div>
+                <div
+                  class="form-group mt-2 mb-2"
+                  [class.has-error]="department.invalid"
+                >
+                  <select
+                    class="form-control"
+                    id="department"
+                    name="category"
+                    #department="ngModel"
+                    placeholder="Department"
+                    [(ngModel)]="selectedCat"
+                    required
+                  >
+                    <option value="selectedCat" disabled>
+                      Select Any Category
+                    </option>
+                    <option
+                      *ngFor="let item of CategoryList"
+                      [value]="item.value"
+                    >
+                      {{ item.lable }}
+                    </option>
+                  </select>
+                  <span
+                    class="has-error"
+                    *ngIf="department.errors?.required && department.touched"
+                  >
+                    Category is Required
+                  </span>
+                </div>
+                
+                <div
+                  class="form-group mt-2 mb-2"
+                  [class.has-error]="annual_trunover.invalid"
+                >
+                  <input
+                    type="text"
+                    class="form-control"
+                    ngModel
+                    #annual_trunover="ngModel"
+                    id="annual_trunover"
+                    name="annual_trunover"
+                    placeholder="annual trunover"
+                    required
+                  />
+                  <span
+                    class="has-error"
+                    *ngIf="annual_trunover.errors?.required && annual_trunover.touched"
+                  >
+                    Annual trunover is Required
+                  </span>
+                </div>
+                <div class="form-group mt-2 mb-2 text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-lg btn-success btn-block me-5"
+                    [disabled]="f.invalid"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    class="btn btn-lg btn-danger btn-block"
+                    (click)="onBack()"
+                  >
+                    Back
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
